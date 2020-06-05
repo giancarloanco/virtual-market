@@ -1,1 +1,193 @@
-<p>seller-main works!</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!-- Top Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">VirtualMarket</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" (click)="btn_show_resume()" style="cursor: pointer;">Resumen</a>
+            <a class="nav-item nav-link" (click)="btn_show_publications()" style="cursor: pointer;">Publicaciones</a>
+            <a class="nav-item nav-link" (click)="btn_show_sales()" style="cursor: pointer;">Ventas</a>
+            <a class="nav-item nav-link" (click)="btn_show_comments()" style="cursor: pointer;">Comentarios</a>
+            <a class="nav-item nav-link" >Configuración</a>
+        </div>
+    </div>
+</nav>    
+
+<div style="width: 100%; height: 100vh; background: url(../../../assets/img/background2.jpg) no-repeat center top; background-size: cover;">
+    <!-- MAIN -->
+    <div class="container py-4" [ngStyle]="show_resume">
+        <!-- Content -->
+        <article>        
+                <div class="card" style="width: 18rem;">
+                    <div class="row">
+                        <img style="margin-left: 25px; margin-top: 10px;" src="assets/img/user_img.png" width="50" height="50">
+                        <div class="card-body">
+                            <h5 class="card-title">Hola, {{user_data[0]}}.</h5>
+                        </div>
+                    </div>
+                </div>
+            
+            <div class="py-3">
+                <div class="line">
+                    <h4 class="text-size-40 margin-bottom-30">Información de Resumen</h4>
+                    <hr class="break-small background-primary margin-bottom-30">
+                    <p class="margin-bottom-40">
+                        En esta página encontrará información respecto a sus ventas.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                            <h5 class="card-title">Publicaciones</h5>
+                            
+                            <p class="card-text">No tienes tareas de publicaciones</p>
+                            <a (click)="btn_show_publications()" class="card-link" style="cursor: pointer; color: blue;">Ir a Publicaciones</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Ventas</h5>
+                                <p class="card-text">No tienes ventas por preparar.</p>
+                                <a (click)="btn_show_sales()" class="card-link" style="cursor: pointer; color: blue;">Ver Ventas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Contactos por responder</h5>
+                                <p class="card-text">No tienes contactos por responder</p>
+                                <a (click)="btn_show_comments()" class="card-link" style="cursor: pointer; color: blue;">Responder</a>
+                            </div> 
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class="container py-4" [ngStyle]="show_publications">
+        <div class="card" style="width: 18rem;">
+            <div class="row">
+                <img style="margin-left: 25px; margin-top: 10px;" src="assets/img/user_img.png" width="50" height="50">
+                <div class="card-body">
+                    <h5 class="card-title">{{user_data[0]}}.</h5>
+                </div>
+            </div>
+        </div>
+        <div class="py-3">
+            <div class="line">
+                <h4 class="text-size-40 margin-bottom-30">Publicaciones</h4>
+                <hr class="break-small background-primary margin-bottom-30">
+                <p class="margin-bottom-40">
+                    Aquí se muestran tus productos publicados.
+                </p>
+            </div>
+
+        </div>
+        <table class="table table-bordered" style="background-color: whitesmoke;">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Foto</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pub of publications">
+                <th scope="row">{{pub[0]}}</th>
+                <td>{{pub[1]}}</td>
+                <td>{{pub[2]}}</td>
+                <td>
+                    <img src="{{pub[3]}}" class="img-thumbnail" style="height: 100px;">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container py-4" [ngStyle]="show_sales">
+        <div class="card" style="width: 18rem;">
+            <div class="row">
+                <img style="margin-left: 25px; margin-top: 10px;" src="assets/img/user_img.png" width="50" height="50">
+                <div class="card-body">
+                    <h5 class="card-title">{{user_data[0]}}.</h5>
+                </div>
+            </div>
+        </div>
+        <div class="py-3">
+            <div class="line">
+                <h4 class="text-size-40 margin-bottom-30">Ventas</h4>
+                <hr class="break-small background-primary margin-bottom-30">
+                <p class="margin-bottom-40">
+                    Aquí se muestran tus ventas.
+                </p>
+            </div>
+
+        </div>
+        <table class="table table-bordered" style="background-color: whitesmoke;">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Total Venta</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sale of sales">
+                    <th scope="row">{{sale[0]}}</th>
+                    <td>{{sale[1]}}</td>
+                    <td>{{sale[2]}}</td>
+                    <td>{{sale[3]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container py-4" [ngStyle]="show_comments">
+        <div class="card" style="width: 18rem;">
+            <div class="row">
+                <img style="margin-left: 25px; margin-top: 10px;" src="assets/img/user_img.png" width="50" height="50">
+                <div class="card-body">
+                    <h5 class="card-title">{{user_data[0]}}.</h5>
+                </div>
+            </div>
+        </div>
+        <div class="py-3">
+            <div class="line">
+                <h4 class="text-size-40 margin-bottom-30">Contactos por responder</h4>
+                <hr class="break-small background-primary margin-bottom-30">
+                <p class="margin-bottom-40">
+                    Estas personas te hicieron preguntas.
+                </p>
+            </div>
+
+        </div>
+        <table class="table table-bordered" style="background-color: whitesmoke;">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Comentario</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let comment of comments">
+                    <th scope="row">{{comment[0]}}</th>
+                    <td>{{comment[1]}}</td>
+                    <td>{{comment[2]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
