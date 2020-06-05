@@ -20,6 +20,8 @@ export class SellerMainComponent implements OnInit {
 
   comments = [["1", "Luis A.", "Cuánto tiempo tarda el envío?"], ["2", "Pedro B.", "El delivery llega hasta Miraflores?"]]
 
+  waiting_comments: number;
+
   css_show_resume() {
     this.show_resume = {display: 'block'};
     this.show_sales = {display: 'none'};
@@ -67,6 +69,7 @@ export class SellerMainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.waiting_comments = this.comments.length;
   }
 
 }

@@ -2,6 +2,7 @@
 
 <!-- Top Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="assets/img/logo.PNG" class="img-thumbnail" style="height: 60px; width: 60px; border-radius: 100%; margin-right: 15px;">
     <a class="navbar-brand" href="#">VirtualMarket</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
@@ -64,7 +65,7 @@
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">Contactos por responder</h5>
-                                <p class="card-text">No tienes contactos por responder</p>
+                                <p class="card-text">Tienes {{waiting_comments}} contactos por responder</p>
                                 <a (click)="btn_show_comments()" class="card-link" style="cursor: pointer; color: blue;">Responder</a>
                             </div> 
                         </div>                       
@@ -173,12 +174,13 @@
             </div>
 
         </div>
-        <table class="table table-bordered" style="background-color: whitesmoke;">
+        <table class="table table-hover table-bordered" style="background-color: whitesmoke;">
             <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Comentario</th>
+                <th scope="col">Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -186,6 +188,10 @@
                     <th scope="row">{{comment[0]}}</th>
                     <td>{{comment[1]}}</td>
                     <td>{{comment[2]}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" >Responder</button>
+                        <button type="button" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
