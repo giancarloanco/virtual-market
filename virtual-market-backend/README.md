@@ -6,7 +6,6 @@ This project was generated with Django 3.0.7 and Python 3.6.8
 - URL: http://localhost:8000/
 ## Install
 1. Install Python
-2. Install pip
-3. Install Django: pip install django
-4. Install Rest Framework: pip install djangorestframework
-5. Install LiClipse
+2. Install Django: pip install django
+3. Install Rest Framework: pip install djangorestframework
+4. Install LiClipse
