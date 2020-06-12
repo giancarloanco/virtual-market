@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from "../../services/users.service";
+import { ProductsService } from "../../services/products.service";
 
 @Component({
   selector: 'app-buyer-main',
@@ -11,7 +13,9 @@ export class BuyerMainComponent implements OnInit {
   show_purchases = {display: 'none'};
   show_comments = {display: 'none'};
 
-  user_data = ["Alex Lopez", "buyer"]
+  user_id: any;
+  user_data: any;
+  user_name: string;
 
   purchases = [["1", "Papa Negra Andina x kg.", "S/ 2.00", "Agro1", "assets/img/products/prod1.jpg"], ["2", "Plátano de Seda x kg.", "S/ 2.50", "Agro1", "assets/img/products/prod2.jpg"]]
 
@@ -50,9 +54,22 @@ export class BuyerMainComponent implements OnInit {
     this.css_show_comments();
   }
 
-  constructor() { }
+  async read_user() {
+    this.user_id = localStorage.getItem("user_id");
+    this.users_service.get_user(this.user_id).subscribe(
+      res => {
+        this.user_data = res;
+        this.user_name = this.user_data["first_name"] + " " + this.user_data["last_name"];
+      },
+      err => console.log(err)
+    );
+
+  }
+
+  constructor(private products_service: ProductsService, private users_service: UsersService) { }
 
   ngOnInit(): void {
+    this.read_user();
     this.waiting_comments = this.comments.length;
     this.num_purchases = this.purchases.length;
   }

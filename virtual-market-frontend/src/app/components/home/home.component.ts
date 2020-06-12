@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { EventEmitter } from 'protractor';
+import { ProductsService } from "../../services/products.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,66 +10,36 @@ import { EventEmitter } from 'protractor';
 })
 export class HomeComponent implements OnInit {
 
-  show_resume = {display: 'block'};
-  show_purchases = {display: 'none'};
-  show_comments = {display: 'none'};
+  products_list: any;  
+  header_path = 'assets/img/products/';
 
-  user_data = ["Alex Lopez", "buyer"]
-
-  purchases = [["1", "Papa Negra Andina x kg.", "S/ 2.00", "Agro1", "assets/img/products/prod1.jpg"], ["2", "Plátano de Seda x kg.", "S/ 2.50", "Agro1", "assets/img/products/prod2.jpg"]]
-
-  comments = [["1", "Papa Negra Andina x kg.", "Agro1", "Cuánto tiempo tarda el envío?"], ["2", "Plátano de Seda x kg.", "Agro1", "El delivery llega hasta Miraflores?"]]
-
-  waiting_comments: number;
-  num_purchases: number;
-  router: any;
-
-  css_show_resume() {
-    this.show_resume = {display: 'block'};
-    this.show_purchases = {display: 'none'};
-    this.show_comments = {display: 'none'};
-  }
-
-  css_show_purchases() {
-    this.show_resume = {display: 'none'};
-    this.show_purchases = {display: 'block'};
-    this.show_comments = {display: 'none'};
-  }
-
-  css_show_comments() {
-    this.show_resume = {display: 'none'};
-    this.show_purchases = {display: 'none'};
-    this.show_comments = {display: 'block'};
-  }
-
-  css_show_login() {
-    this.show_resume = {display: 'none'};
-    this.show_purchases = {display: 'none'};
-    this.show_comments = {display: 'block'};
-  }
-
-  btn_show_resume() {
-    this.css_show_resume();
-  }
-
-  btn_show_purchases() {
-    this.css_show_purchases();
-  }
-
-  btn_show_comments() {
-    this.css_show_comments();
-  }
-  
-  btn_show_login() {
+  btn_login(){
     this.router.navigate(['/login'])
   }
 
+  complete_paths() {
+    for (let i=0; i<this.products_list.length; i++) {
+      this.products_list[i]["type"] = this.header_path + this.products_list[i]["type"];
+    }
+  }
 
-  constructor() { }
+  async load_products() {
+    this.products_service.get_products().subscribe(
+      res => {
+        this.products_list = res;
+        //this.complete_paths();
+        console.log(this.products_list)
+      },
+      err => console.log(err)
+    );
+
+  }
+
+  constructor(private router: Router, private products_service: ProductsService) { }
 
   ngOnInit(): void {
-    this.waiting_comments = this.comments.length;
-    this.num_purchases = this.purchases.length;
+    this.load_products();
+    
     //this.search.valueChanges.subscribe(value => this.searchEmitter.emit(value))
   }
 

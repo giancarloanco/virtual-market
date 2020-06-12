@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from "../../services/users.service";
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  test_user = [["seller1", "seller2020", "seller"], ["buyer1", "buyer2020", "buyer"]]
+  user_id: string;
+  users_list: any;
 
   show_wrong_user = { display: 'none' };
 
-  search_in_users(name: string, password: string): string {
-    for (let i=0; i<this.test_user.length; i++) {
-      if ((name == this.test_user[i][0]) && (password == this.test_user[i][1])) {
-        return this.test_user[i][2];
+  search_in_users(email: string, password: string): string {
+    for (let i=0; i<this.users_list.length; i++) {
+      if ((email == this.users_list[i]["email"]) && (password == this.users_list[i]["password"])) {
+        this.user_id = this.users_list[i]["id"];
+        return this.users_list[i]["category"];
       }
     }
 
@@ -30,10 +33,12 @@ export class LoginComponent implements OnInit {
   }
 
   login(user_name: HTMLInputElement, user_password: HTMLInputElement) {
-    if (this.search_in_users(user_name.value, user_password.value) == "seller") {
+    if (this.search_in_users(user_name.value, user_password.value) == "2") {
+      localStorage.setItem('user_id', this.user_id);
       this.router.navigate(['/seller'])
     }
-    else if (this.search_in_users(user_name.value, user_password.value) == "buyer") {
+    else if (this.search_in_users(user_name.value, user_password.value) == "3") {
+      localStorage.setItem('user_id', this.user_id);
       this.router.navigate(['/buyer'])
     }
     else {
@@ -43,9 +48,21 @@ export class LoginComponent implements OnInit {
 
   }
 
-  constructor(private router: Router) { }
+  async read_users() {
+    this.users_service.get_users().subscribe(
+      res => {
+        this.users_list = res;
+      },
+      err => console.log(err)
+    );
+
+  }
+
+  constructor(private router: Router, private users_service: UsersService) { }
 
   ngOnInit(): void {
+    this.read_users();
+
   }
 
 }
