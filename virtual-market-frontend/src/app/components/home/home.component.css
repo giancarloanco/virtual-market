@@ -1,0 +1,90 @@
+
+
+.mat-form-field{
+    width: 100%;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+section {
+  display: block;
+  
+}
+
+article .bloc-img {
+    display: inline-block;
+    margin: 0 0 1.2em;
+    vertical-align: top;
+    width: 175px;
+  }
+  
+.bloc-img.bordered {border: 4px solid #e7efe4; }
+.bloc-img img {max-width: 100%; }
+
+
+.row
+{
+    margin-top: 30px;
+}
+img
+{
+    width: 100%;
+}
+.product-bottom .fa
+{
+    color: #28a745;
+    font-size: 10px;
+}
+
+.product-bottom h3
+{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.product-bottom h5
+{
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.overlay
+{
+    display: block;
+    opacity:0;
+    position: absolute;
+    top: 10%;
+    margin-left: 0;
+    width:70px;
+ }
+
+.product-top:hover .overlay
+{
+    opacity: 1;
+    margin-left: 5%;
+    transition: 0.5s;
+}
+
+.overlay .fa
+{
+    cursor: pointer;
+    background-color: #555;
+    color: #000;
+    height: 35px;
+    width: 35px;
+    font-size: 20px;
+    padding: 7px;
+    margin: 5%;
+    margin-bottom: 5%;
+}
+
+.overlay .btn-secondary
+{
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}

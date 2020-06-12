@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { SellerMainComponent } from './components/seller-main/seller-main.component';
 import { BuyerMainComponent } from './components/buyer-main/buyer-main.component';
-
+import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -19,8 +19,12 @@ const routes: Routes = [
     component: BuyerMainComponent
   },
   {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/home',
     pathMatch: 'full'
   }
 ];

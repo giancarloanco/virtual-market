@@ -1,0 +1,170 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Top Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="assets/img/logo.PNG" class="img-thumbnail" style="height: 60px; width: 60px; border-radius: 100%; margin-right: 15px;">
+    <a class="navbar-brand" href="#">VirtualMarket</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" (click)="btn_show_resume()" style="cursor: pointer;">Resumen</a>
+            <a class="nav-item nav-link" (click)="btn_show_purchases()" style="cursor: pointer;">Compras</a>
+            <a class="nav-item nav-link" (click)="btn_show_comments()" style="cursor: pointer;">Comentarios</a>
+            <a class="nav-item nav-link" >Configuración</a>
+            <form class="example-form">
+                <mat-form-field>
+                    <input [formControl]="search" matInput placeholder="Busqueda">
+                </mat-form-field>
+            </form>
+            <a routerLink="/login"><button class="btn btn-success pull-right" > Login</button></a>
+        </div>
+    </div>
+</nav>    
+
+<div style="width: 100%; height: 100vh; background: #E0E0E0 no-repeat center top; background-size: cover;">
+    <!-- MAIN -->
+    <div class="menus" >
+        <!-- Content -->
+        <article>        
+            <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Carnes</button>
+              <button mat-menu-item>Frutas</button>
+              <button mat-menu-item>Verduras</button>
+              <button mat-menu-item>Productos de Limpieza</button>
+            </mat-menu>
+        </article>
+    </div>
+
+    <div class="Lo ultimo" style="margin:0 auto;"> 
+        <div class="container">
+            <h2> lo último</h2>
+            <div class="row">
+                <div class ="col-md-3">
+                    <div class="product-top">
+                     <img src="assets/img/products/piña.jpg">
+                         <div clas="overlay">
+                             <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye" ></i></button>
+                             <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                             <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                         </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                         <i class="fa fa-star"></i>
+                         <i class="fa fa-star"></i>
+                         <i class="fa fa-star"></i>
+                         <i class="fa fa-star-half-o"></i>
+                         <i class="fa fa-star-o"></i>
+                         <h3>Piña x caja</h3>
+                         <h5>S/.200</h5>
+                     </div>
+                </div>
+ 
+                <div class ="col-md-3">
+                 <div class="product-top">
+                  <img src="assets/img/products/palta.jpg">
+                      <div clas="overlay">
+                          <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye" ></i></button>
+                          <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                          <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                      </div>
+                 </div>
+                 <div class="product-bottom text-center">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-o"></i>
+                      <i class="fa fa-star-o"></i>
+                      <h3>Palta x caja</h3>
+                      <h5>S/.150</h5>
+                  </div>
+             </div>
+ 
+             <div class ="col-md-3">
+                 <div class="product-top">
+                  <img src="assets/img/products/huevos.jpg">
+                      <div clas="overlay">
+                          <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye" ></i></button>
+                          <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                          <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                      </div>
+                 </div>
+                 <div class="product-bottom text-center">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-o"></i>
+                      <h3>Huevos x plancha</h3>
+                      <h5>S/.75</h5>
+                  </div>
+             </div>
+            </div>
+    </div>
+
+    <div class="Historial" style="margin:0 auto;">
+       <div class="container">
+           <h2> Historial</h2>
+           <div class="row">
+               <div class ="col-md-3">
+                   <div class="product-top">
+                    <img src="assets/img/products/piña.jpg">
+                        <div clas="overlay">
+                            <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye" ></i></button>
+                            <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                        </div>
+                   </div>
+                   <div class="product-bottom text-center">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <h3>La piña</h3>
+                        <h5>S/.200</h5>
+                    </div>
+               </div>
+
+               <div class ="col-md-3">
+                <div class="product-top">
+                 <img src="assets/img/products/palta.jpg">
+                     <div clas="overlay">
+                         <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye" ></i></button>
+                         <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                     </div>
+                </div>
+                <div class="product-bottom text-center">
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star-o"></i>
+                     <h3>Palta x caja</h3>
+                     <h5>S/.150</h5>
+                 </div>
+            </div>
+
+            <div class ="col-md-3">
+                <div class="product-top">
+                 <img src="assets/img/products/huevos.jpg">
+                     <div clas="overlay">
+                         <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye" ></i></button>
+                         <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                         <button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                     </div>
+                </div>
+                <div class="product-bottom text-center">
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star-half-o"></i>
+                     <i class="fa fa-star-o"></i>
+                     <h3>Huevo x plancha</h3>
+                     <h5>S/.75</h5>
+                 </div>
+            </div>
+           </div>
+    </div>
+</div>
