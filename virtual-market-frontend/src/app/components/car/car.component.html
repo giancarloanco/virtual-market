@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Top Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="assets/img/logo.PNG" class="img-thumbnail" style="height: 60px; width: 60px; border-radius: 100%; margin-right: 15px;">
+    <a class="navbar-brand" href="#">VirtualMarket</a>
+</nav>    
+
+<nav class="navbar navbar-light bg-light">
+    VirtualMarket, una alternativa diferente.
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Escribe aquí para buscar" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      <button class="btn btn-primary my-2 my-sm-0" type="submit" style="margin-left: 10px;" (click)="btn_login()">Iniciar Sesión</button>
+    </form>
+  </nav>
+
+  
+<div style="width: 100%; height: 100vh; background: url(../../../assets/img/background_home.jpg) no-repeat center top; background-size: cover;">
+    <!-- MAIN -->
+        <div class="menus" >
+            <!-- Content -->
+            <article>        
+                <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Frutas</button>
+                    <button mat-menu-item>Verduras</button>
+                    <button mat-menu-item>Tubérculos</button>
+                    <button mat-menu-item>Otros</button>
+                </mat-menu>
+            </article>
+        </div>
+    
+    
+    
+        <div class="shopping-cart">
+            <!-- Title -->
+            <div class="title">
+              Carro
+            </div>
+           
+            <!-- Product #1 -->
+            <div class="item">
+              <div class="buttons">
+                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                <span class="delete-btn"></span>
+              </div>
+           
+              <div class="image">
+                <img src="./assets/img/products/huevos.jpg" width=100px height=100px alt="" />
+              </div>
+           
+              <div class="description">
+                <span>Huevos</span>
+                <span>Rubios</span>
+              </div>
+           
+              <div class="quantity">
+                <button class="plus-btn" type="button" name="button">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+                <input type="text" name="name" value="1">
+                <button class="minus-btn" type="button" name="button">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+              </div>
+           
+              <div class="total-price">S/.165</div>
+            </div>
+           
+          </div>
+    
+    
+    </div>

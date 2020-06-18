@@ -5,6 +5,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SellerMainComponent } from './components/seller-main/seller-main.component';
 import { BuyerMainComponent } from './components/buyer-main/buyer-main.component';
 import { HomeComponent } from './components/home/home.component';
+import { ProductComponent } from './components/product/product.component'
+import { CarComponent } from './components/car/car.component'
+import { CreateProductComponent } from './components/create-product/create-product.component'
 const routes: Routes = [
   {
     path: 'login',
@@ -21,6 +24,18 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'product',
+    component: ProductComponent
+  },
+  {
+    path: 'car',
+    component: CarComponent
+  },
+  {
+    path: 'create',
+    component: CreateProductComponent
   },
   {
     path: '',

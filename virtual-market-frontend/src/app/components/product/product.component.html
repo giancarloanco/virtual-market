@@ -1,1 +1,116 @@
-<p>product works!</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Top Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="assets/img/logo.PNG" class="img-thumbnail" style="height: 60px; width: 60px; border-radius: 100%; margin-right: 15px;">
+    <a class="navbar-brand" href="#">VirtualMarket</a>
+</nav>    
+
+<nav class="navbar navbar-light bg-light">
+    VirtualMarket, una alternativa diferente.
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Escribe aquí para buscar" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      <button class="btn btn-primary my-2 my-sm-0" type="submit" style="margin-left: 10px;" (click)="btn_login()">Iniciar Sesión</button>
+    </form>
+  </nav>
+
+<div style="width: 100%; height: 100vh; background: url(../../../assets/img/background_home.jpg) no-repeat center top; background-size: cover;">
+<!-- MAIN -->
+    <div class="menus" >
+        <!-- Content -->
+        <article>        
+            <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Frutas</button>
+                <button mat-menu-item>Verduras</button>
+                <button mat-menu-item>Tubérculos</button>
+                <button mat-menu-item>Otros</button>
+            </mat-menu>
+        </article>
+    </div>
+
+
+
+    <div class ="container">
+        <div class ="row">
+            <div class="col-md-5">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="./assets/img/products/huevos.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="./assets/img/bg.jpeg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="./assets/img/products/huevos.jpg" alt="Third slide">
+                    </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <p class="newarrival text-center">NUEVO</p>
+                <h2>Descripcion del producto</h2>
+                <p>Código de Producto : HARAKAKIKO</p>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <i class="fa fa-star-o"></i>
+
+                <p class="price">S/.150.00</p>
+                <p><b>Disponibilidad:</b> Stock</p>
+                <p><b>Condición:</b> Nuevo</p>
+                <p><b>Marca:</b> ss</p>
+                <label>Cantidad:</label>
+                <input type="text" value="1">
+                <button type="button" class="btn btn-default cart">
+                    Añadir al Carro
+                </button>
+                
+            </div>
+
+
+           
+        </div>
+
+        <div class="col-md-5">
+            <h1>Preguntas y Respuestas</h1>
+            <input class="form-question" id="question-form" type="text" placeholder="Escribe aquí una pregunta..." aria-label="Search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit" style="margin-left: 10px;" (click)="btn_login()">Preguntar</button> 
+            <h1>Últimas Preguntas</h1>
+
+            <table class="table table-hover table-bordered" style="background-color: whitesmoke;">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Pregunta</th>
+                    <th scope="col">Respuesta</th>
+                </tr>
+                </thead>
+                <tbody>
+                   <!-- <tr *ngFor="let comment of comments">
+                        <th scope="row">{{comment[0]}}</th>
+                        <td>{{comment[1]}}</td>
+                        <td>{{comment[2]}}</td>
+                        <td>{{comment[2]}}</td>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>

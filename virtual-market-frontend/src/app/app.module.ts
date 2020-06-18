@@ -20,6 +20,8 @@ import { BuyerMainComponent } from './components/buyer-main/buyer-main.component
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './components/product/product.component';
+import { CarComponent } from './components/car/car.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ProductComponent } from './components/product/product.component';
     SellerMainComponent,
     BuyerMainComponent,
     HomeComponent,
-    ProductComponent
+    ProductComponent,
+    CarComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,

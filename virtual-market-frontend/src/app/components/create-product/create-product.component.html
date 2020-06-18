@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Top Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="assets/img/logo.PNG" class="img-thumbnail" style="height: 60px; width: 60px; border-radius: 100%; margin-right: 15px;">
+    <a class="navbar-brand" href="#">VirtualMarket</a>
+</nav>    
+
+
+
+<div style="width: 100%; height: 100vh; background: url(../../../assets/img/background_home.jpg) no-repeat center top; background-size: cover;">
+    <!-- MAIN -->
+    <div class="menus" >
+        <!-- Content -->
+        <article>        
+            <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Frutas</button>
+              <button mat-menu-item>Verduras</button>
+              <button mat-menu-item>Tubérculos</button>
+              <button mat-menu-item>Otros</button>
+            </mat-menu>
+        </article>
+    </div>  
+
+    <div class="regform"> <h1>Creación de producto</h1></div>
+    
+    <div class="container">
+        <form action="action_page.php">
+      
+          <label for="fname">Título del producto</label>
+          <input type="text" id="titulo" name="titulo" placeholder="Escribe un título...">
+      
+          <label for="lname">Precio   </label>
+          <input type="number" id="precio" name="precio" placeholder="Precio...">
+          <br/>
+          <label for="cat">Categoría</label>
+          <select id="cat" name="cat">
+            <option value="frutas">Frutas</option>
+            <option value="verduras">Verduras</option>
+            <option value="tuberculos">Tubérculos</option>
+            <option value="otros">Otros</option>
+          </select>
+      
+          <label for="subject">Descripción</label>
+          <textarea id="subject" name="subject" placeholder="Detalla el producto..." style="height:200px"></textarea>
+
+          
+          <label for="img">Imágenes: </label>
+          <br/>
+          <input type="file" id="myFile" name="filename">
+          <br/>
+          <br/>
+        <input type="submit" value="Continuar">
+      
+        </form>
+      </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
