@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from "../../services/users.service";
 import { ProductsService } from "../../services/products.service";
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-seller-main',
@@ -18,13 +19,18 @@ export class SellerMainComponent implements OnInit {
   user_data: any;
   user_name: string;
 
-  publications = [["1", "Papa Negra Andina x kg.", "S/ 2.00", "assets/img/products/prod1.jpg"], ["2", "Plátano de Seda x kg.", "S/ 2.50", "assets/img/products/prod2.jpg"]]
+  publications: any;
+  //publications = [["1", "Papa Negra Andina x kg.", "S/ 2.00", "assets/img/products/prod1.jpg"], ["2", "Plátano de Seda x kg.", "S/ 2.50", "assets/img/products/prod2.jpg"]]
 
-  sales = [["1", "Luis A.", "Papa Negra Andina", "S/ 10.00"], ["2", "Pedro B.", "Plátano de Seda", "S/ 5.50"], ["3", "Arturo C.", "Papa Negra Andina", "S/ 6.00"], ["4", "Jose D.", "Varios", "S/ 20.00"]]
+  sales: any;
+  //sales = [["1", "Luis A.", "Papa Negra Andina", "S/ 10.00"], ["2", "Pedro B.", "Plátano de Seda", "S/ 5.50"], ["3", "Arturo C.", "Papa Negra Andina", "S/ 6.00"], ["4", "Jose D.", "Varios", "S/ 20.00"]]
 
-  comments = [["1", "Luis A.", "Cuánto tiempo tarda el envío?"], ["2", "Pedro B.", "El delivery llega hasta Miraflores?"]]
+  comments: any;
+  //comments = [["1", "Luis A.", "Cuánto tiempo tarda el envío?"], ["2", "Pedro B.", "El delivery llega hasta Miraflores?"]]
 
   waiting_comments: number;
+  num_pubs: number;
+  num_sales: number;
 
   css_show_resume() {
     this.show_resume = {display: 'block'};
@@ -54,6 +60,10 @@ export class SellerMainComponent implements OnInit {
     this.show_comments = {display: 'block'};
   }
 
+  btn_new_product() {
+    this.router.navigate(['/create']);
+  }
+
   btn_show_resume() {
     this.css_show_resume();
   }
@@ -70,6 +80,42 @@ export class SellerMainComponent implements OnInit {
     this.css_show_comments();
   }
 
+  async read_pubs() {
+    this.products_service.get_products().subscribe(
+      res => {
+        this.publications = res;
+        console.log(this.publications)
+        this.num_pubs = this.publications.length;
+      },
+      err => console.log(err)
+    )
+
+  }
+
+  async read_sales() {
+    this.products_service.get_sales().subscribe(
+      res => {
+        this.sales = res;
+        console.log(this.sales)
+        this.num_sales = this.sales.length;
+      },
+      err => console.log(err)
+    )
+
+  }
+
+  async read_comments() {
+    this.products_service.get_comments().subscribe(
+      res => {
+        this.comments = res;
+        console.log(this.comments)
+        this.waiting_comments = this.comments.length;
+      },
+      err => console.log(err)
+    )
+
+  }
+
   async read_user() {
     this.user_id = localStorage.getItem("user_id");
     this.users_service.get_user(this.user_id).subscribe(
@@ -82,11 +128,13 @@ export class SellerMainComponent implements OnInit {
 
   }
 
-  constructor(private products_service: ProductsService, private users_service: UsersService) { }
+  constructor(private products_service: ProductsService, private users_service: UsersService, private router: Router) { }
 
   ngOnInit(): void {
     this.read_user();
-    this.waiting_comments = this.comments.length;
+    this.read_sales();
+    this.read_pubs();
+    this.read_comments();
     
   }
 

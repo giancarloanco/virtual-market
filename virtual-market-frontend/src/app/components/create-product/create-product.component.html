@@ -7,64 +7,83 @@
     <a class="navbar-brand" href="#">VirtualMarket</a>
 </nav>    
 
-
-
 <div style="width: 100%; height: 100vh; background: url(../../../assets/img/background_home.jpg) no-repeat center top; background-size: cover;">
-    <!-- MAIN -->
-    <div class="menus" >
-        <!-- Content -->
-        <article>        
-            <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>Frutas</button>
-              <button mat-menu-item>Verduras</button>
-              <button mat-menu-item>Tubérculos</button>
-              <button mat-menu-item>Otros</button>
-            </mat-menu>
-        </article>
-    </div>  
+  <!-- MAIN -->
+  <div class="menus" >
+      <!-- Content -->
+      <article>        
+          <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Frutas</button>
+            <button mat-menu-item>Verduras</button>
+            <button mat-menu-item>Tubérculos</button>
+            <button mat-menu-item>Otros</button>
+          </mat-menu>
+      </article>
+  </div>  
 
-    <div class="regform"> <h1>Creación de producto</h1></div>
-    
-    <div class="container">
-        <form action="action_page.php">
-      
-          <label for="fname">Título del producto</label>
-          <input type="text" id="titulo" name="titulo" placeholder="Escribe un título...">
-      
-          <label for="lname">Precio   </label>
-          <input type="number" id="precio" name="precio" placeholder="Precio...">
-          <br/>
-          <label for="cat">Categoría</label>
-          <select id="cat" name="cat">
-            <option value="frutas">Frutas</option>
-            <option value="verduras">Verduras</option>
-            <option value="tuberculos">Tubérculos</option>
-            <option value="otros">Otros</option>
-          </select>
-      
-          <label for="subject">Descripción</label>
-          <textarea id="subject" name="subject" placeholder="Detalla el producto..." style="height:200px"></textarea>
-
-          
-          <label for="img">Imágenes: </label>
-          <br/>
-          <input type="file" id="myFile" name="filename">
-          <br/>
-          <br/>
-        <input type="submit" value="Continuar">
-      
-        </form>
+  <div class="container py-4">
+    <div class="card" style="width: 18rem;">
+      <div class="row">
+        <img style="margin-left: 25px; margin-top: 10px;" src="assets/img/user_img.png" width="50" height="50">
+        <div class="card-body">
+          <h5 class="card-title">{{user_name}}.</h5>
+        </div>
       </div>
+    </div>
 
+    
 
+    <div class="py-2">
+      <h2>
+        Nuevo Producto
+      </h2>
+      <form>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nombre</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" aria-describedby="nameHelp" [(ngModel)]="name_prod" name="name_prod_i">
+            <small id="nameHelp" class="form-text text-muted">Escriba el nombre del producto.</small>
+          </div>
+        </div>
 
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Precio</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" aria-describedby="priceHelp" [(ngModel)]="price_prod" name="price_prod_i">
+            <small id="priceHelp" class="form-text text-muted">Escriba el precio del producto en Soles.</small>
+          </div>
+        </div>
 
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Categoría</label>
+          <div class="col-sm-10">
+            <select id="cat" name="cat" [(ngModel)]="category_prod">
+              <option value="Frutas">Frutas</option>
+              <option value="Verduras">Verduras</option>
+              <option value="Tuberculos">Tuberculos</option>
+              <option value="Otros">Otros</option>
+            </select>
+          </div>
+        </div>
 
-
-
-
-
+        <div class="form">
+          <label for="subject">Descripción</label>
+          <textarea id="subject" name="subject" placeholder="Escriba la descripción del producto." style="height:200px" [(ngModel)]="description_prod"></textarea>
+        </div>
+      
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Imágenes</label>
+          <div class="col-sm-10">
+            <input type="file" (change)="select_image($event)">
+          </div>
+        </div>  
+      
+        <input type="submit" value="Cargar Producto" (click)="create_product()">
+      
+      </form>
+    </div>
+  </div>
 
 </div>
 

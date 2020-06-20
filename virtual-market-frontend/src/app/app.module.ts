@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './components/product/product.component';
 import { CarComponent } from './components/car/car.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CreateProductComponent } from './components/create-product/create-produ
     HomeComponent,
     ProductComponent,
     CarComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

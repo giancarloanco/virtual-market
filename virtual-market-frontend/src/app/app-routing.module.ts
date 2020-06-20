@@ -8,6 +8,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component'
 import { CarComponent } from './components/car/car.component'
 import { CreateProductComponent } from './components/create-product/create-product.component'
+import { PaymentComponent } from './components/payment/payment.component'
+
+
 const routes: Routes = [
   {
     path: 'login',
@@ -30,12 +33,16 @@ const routes: Routes = [
     component: ProductComponent
   },
   {
-    path: 'car',
+    path: 'cart',
     component: CarComponent
   },
   {
     path: 'create',
     component: CreateProductComponent
+  },
+  {
+    path: 'payment',
+    component: PaymentComponent
   },
   {
     path: '',

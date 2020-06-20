@@ -10,11 +10,9 @@
 <nav class="navbar navbar-light bg-light">
     VirtualMarket, una alternativa diferente.
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Escribe aquí para buscar" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      <button class="btn btn-primary my-2 my-sm-0" type="submit" style="margin-left: 10px;" (click)="btn_login()">Iniciar Sesión</button>
+      Carrito de compras
     </form>
-  </nav>
+</nav>
 
   
 <div style="width: 100%; height: 100vh; background: url(../../../assets/img/background_home.jpg) no-repeat center top; background-size: cover;">
@@ -31,13 +29,36 @@
                 </mat-menu>
             </article>
         </div>
-    
-    
-    
-        <div class="shopping-cart">
+
+        <div class="container py-4">
+          <div class="card" style="width: 18rem;">
+            <div class="row">
+              <img style="margin-left: 25px; margin-top: 10px;" src="assets/img/user_img.png" width="50" height="50">
+              <div class="card-body">
+                <h5 class="card-title">{{user_name}}.</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="shopping-cart" style="width: 100%">
             <!-- Title -->
             <div class="title">
-              Carro
+              <div class="row">
+                <div class="col">
+                  Carrito de Compras
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col">
+                  <a class="text-decoration-none" style="border: 2px solid rgb(79, 82, 94); border-radius: 6px; padding: 10px; height: 40px; cursor: pointer;" (click)="btn_payment()">
+                    <i class="fa fa-shopping-cart" style="margin-right: 4px;"></i>
+                    Comprar ahora
+                  </a>
+
+                </div>
+              </div>
+              
+              
             </div>
            
             <!-- Product #1 -->
@@ -48,28 +69,41 @@
               </div>
            
               <div class="image">
-                <img src="./assets/img/products/huevos.jpg" width=100px height=100px alt="" />
+                <img [src]="'http://localhost:4000/' + prod_data['image_path']" width=100px height=100px alt="" />
               </div>
            
               <div class="description">
-                <span>Huevos</span>
-                <span>Rubios</span>
+                <span>{{prod_data['name']}}</span>
+                <span>{{prod_data['category']}}</span>
               </div>
            
               <div class="quantity">
-                <button class="plus-btn" type="button" name="button">
+                <button class="plus-btn" type="button" name="button" (click)="btn_add()">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                 </button>
-                <input type="text" name="name" value="1">
+                <input type="text" name="name" value={{prod_num}}>
                 <button class="minus-btn" type="button" name="button">
                     <i class="fa fa-minus" aria-hidden="true"></i>
                 </button>
               </div>
            
-              <div class="total-price">S/.165</div>
+              <div class="total-price">S/ {{prod_data['price']}}</div>
             </div>
            
           </div>
+
+          <div class="container py-4">
+            
+          </div>
+
+          
+
+        </div>
+        
+    
+    
+    
+        
     
     
     </div>

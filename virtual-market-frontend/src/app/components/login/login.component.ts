@@ -33,13 +33,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(user_name: HTMLInputElement, user_password: HTMLInputElement) {
-    if (this.search_in_users(user_name.value, user_password.value) == "2") {
+    if (this.search_in_users(user_name.value, user_password.value) == "1") {
       localStorage.setItem('user_id', this.user_id);
       this.router.navigate(['/seller'])
     }
-    else if (this.search_in_users(user_name.value, user_password.value) == "3") {
+    else if (this.search_in_users(user_name.value, user_password.value) == "2") {
       localStorage.setItem('user_id', this.user_id);
-      this.router.navigate(['/buyer'])
+      this.router.navigate(['/home'])
     }
     else {
       this.wrong_user();
@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
     this.users_service.get_users().subscribe(
       res => {
         this.users_list = res;
+        console.log(this.users_list);
       },
       err => console.log(err)
     );

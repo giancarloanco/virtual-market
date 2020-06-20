@@ -17,6 +17,16 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login'])
   }
 
+  btn_view_detail(id_product){
+    localStorage.setItem('current_product', id_product);
+    this.router.navigate(['/product'])
+  }
+
+  btn_add_to_cart(id_product){
+    localStorage.setItem('current_product', id_product);
+    this.router.navigate(['/cart'])
+  }
+
   complete_paths() {
     for (let i=0; i<this.products_list.length; i++) {
       this.products_list[i]["type"] = this.header_path + this.products_list[i]["type"];

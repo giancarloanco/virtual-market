@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 <!-- Top Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="assets/img/logo.PNG" class="img-thumbnail" style="height: 60px; width: 60px; border-radius: 100%; margin-right: 15px;">
@@ -19,15 +19,29 @@
     <!-- MAIN -->
     <div class="container py-4" [ngStyle]="show_resume">
         <!-- Content -->
-        <article>        
-                <div class="card" style="width: 18rem;">
-                    <div class="row">
-                        <img style="margin-left: 25px; margin-top: 10px;" src="assets/img/user_img.png" width="50" height="50">
-                        <div class="card-body">
-                            <h5 class="card-title">Hola, {{user_name}}.</h5>
+        <article>  
+            <div class="row align-items-center justify-con">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="row">
+                            <img style="margin-left: 25px; margin-top: 10px;" src="assets/img/user_img.png" width="50" height="50">
+                            <div class="card-body">
+                                <h5 class="card-title">Hola, {{user_name}}.</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="col"></div>
+                <div class="col">
+                    <button type="button" class="btn btn-primary" (click)="btn_new_product()">
+                        <i class="fa fa-plus" style="margin-right: 4px;"></i>
+                        Agregar Nuevo Producto
+                    </button>
+                </div>
+            </div>      
+            
+
+            
             
             <div class="py-3">
                 <div class="line">
@@ -37,8 +51,8 @@
                         En esta página encontrará información respecto a sus ventas.
                     </p>
                 </div>
-
             </div>
+
 
             <div class="container">
                 <div class="row">
@@ -47,7 +61,7 @@
                             <div class="card-body">
                             <h5 class="card-title">Publicaciones</h5>
                             
-                            <p class="card-text">No tienes tareas de publicaciones</p>
+                            <p class="card-text">Tienes {{num_pubs}} publicaciones</p>
                             <a (click)="btn_show_publications()" class="card-link" style="cursor: pointer; color: blue;">Ir a Publicaciones</a>
                             </div>
                         </div>
@@ -56,7 +70,7 @@
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">Ventas</h5>
-                                <p class="card-text">No tienes ventas por preparar.</p>
+                                <p class="card-text">Tienes {{num_sales}} ventas por preparar.</p>
                                 <a (click)="btn_show_sales()" class="card-link" style="cursor: pointer; color: blue;">Ver Ventas</a>
                             </div>
                         </div>
@@ -97,19 +111,19 @@
         <table class="table table-bordered" style="background-color: whitesmoke;">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Precio</th>
+                <th scope="col">Precio (S/)</th>
+                <th scope="col">Categoría</th>
                 <th scope="col">Foto</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let pub of publications">
-                <th scope="row">{{pub[0]}}</th>
-                <td>{{pub[1]}}</td>
-                <td>{{pub[2]}}</td>
+                <th scope="row">{{pub['name']}}</th>
+                <td>{{pub['price']}}</td>
+                <td>{{pub['category']}}</td>
                 <td>
-                    <img src="{{pub[3]}}" class="img-thumbnail" style="height: 100px;">
+                    <img [src]="'http://localhost:4000/' + pub['image_path']" class="img-thumbnail" style="height: 100px;">
                 </td>
             </tr>
             </tbody>
@@ -138,7 +152,7 @@
         <table class="table table-bordered" style="background-color: whitesmoke;">
             <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">Cantidad</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Producto</th>
                 <th scope="col">Total Venta</th>
@@ -146,10 +160,10 @@
             </thead>
             <tbody>
                 <tr *ngFor="let sale of sales">
-                    <th scope="row">{{sale[0]}}</th>
-                    <td>{{sale[1]}}</td>
-                    <td>{{sale[2]}}</td>
-                    <td>{{sale[3]}}</td>
+                    <td>{{sale['num_items']}}</td>
+                    <td>{{sale['name_seller']}}</td>
+                    <td>{{sale['name_product']}}</td>
+                    <td>{{sale['price']}}</td>
                 </tr>
             </tbody>
         </table>
@@ -177,21 +191,22 @@
         <table class="table table-hover table-bordered" style="background-color: whitesmoke;">
             <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">Producto</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Comentario</th>
-                <th scope="col">Acciones</th>
             </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let comment of comments">
-                    <th scope="row">{{comment[0]}}</th>
-                    <td>{{comment[1]}}</td>
-                    <td>{{comment[2]}}</td>
+                    <th scope="row">{{comment['id_product']}}</th>
+                    <td>{{comment['id_client']}}</td>
+                    <td>{{comment['comment']}}</td>
+                    <!-- 
                     <td>
                         <button type="button" class="btn btn-primary" >Responder</button>
                         <button type="button" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
                     </td>
+                    -->
                 </tr>
             </tbody>
         </table>

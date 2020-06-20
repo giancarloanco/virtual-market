@@ -4,46 +4,54 @@ import { UsersService } from "../../services/users.service";
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-car',
-  templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  selector: 'app-payment',
+  templateUrl: './payment.component.html',
+  styleUrls: ['./payment.component.css']
 })
-export class CarComponent implements OnInit {
+export class PaymentComponent implements OnInit {
 
   user_id: any;
   user_data: any;
   user_name: string;
 
-  prod_data: any;
+  prod_data: any
+  prod_items: string;
 
-  prod_num: string;
-  
-  btn_login() {
+  show_card_payment = {display: 'none'};
+  show_success = {display: 'none'};
+
+  total_price: string;
+
+  btn_login(){
     this.router.navigate(['/login'])
   }
 
-  btn_add() {
-    let temp = parseInt(this.prod_num)
-    temp = temp + 1; 
-    this.prod_num = temp.toString();
-
-    let temp2 = parseInt(this.prod_data['price'])
-    temp2 = temp2 * temp;
-    this.prod_data['price'] = temp2.toString();
+  selector_change(selectedValue: string) {
+    if (selectedValue === "0") {
+      this.show_card_payment = {display: 'none'};
+    }
+    else {
+      this.show_card_payment = {display: 'block'};
+    }
   }
 
-  btn_payment() {
-    localStorage.setItem('current_product', JSON.stringify(this.prod_data));
-    localStorage.setItem('num', this.prod_num);
+  async btn_pay() {
+    this.show_success = {display: 'block'};
+    console.log(this.prod_data)
 
-    this.router.navigate(['/payment']);
+    this.products_service.create_sale(this.prod_data['name'], this.prod_data['price'], this.prod_items, this.user_name, "Vendedor Admin").subscribe(
+      res => {
+        console.log(res)
+      },
+      err => console.log(err)
+
+    );
 
   }
-
 
   read_product_data_internal() {
     this.prod_data = JSON.parse(localStorage.getItem("current_product"));
-    this.prod_num = localStorage.getItem("num")
+    this.prod_items = localStorage.getItem("num")
   }
 
   async read_user() {
@@ -60,10 +68,11 @@ export class CarComponent implements OnInit {
 
   constructor(private router: Router, private products_service: ProductsService, private users_service: UsersService) { }
 
-
   ngOnInit(): void {
     this.read_user();
     this.read_product_data_internal();
+
+    this.total_price = this.prod_data['price']
   }
 
 }
