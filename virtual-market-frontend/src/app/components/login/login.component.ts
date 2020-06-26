@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   search_in_users(email: string, password: string): string {
     for (let i=0; i<this.users_list.length; i++) {
       if ((email == this.users_list[i]["email"]) && (password == this.users_list[i]["password"])) {
-        this.user_id = this.users_list[i]["id"];
+        this.user_id = this.users_list[i]["_id"];
         return this.users_list[i]["category"];
       }
     }

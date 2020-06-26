@@ -46,7 +46,7 @@ const routes: Routes = [
     component: PaymentComponent
   },
   {
-    path: 'registry',
+    path: 'register',
     component: RegistryComponent
   },
   {
