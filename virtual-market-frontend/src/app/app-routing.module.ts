@@ -9,6 +9,7 @@ import { ProductComponent } from './components/product/product.component'
 import { CarComponent } from './components/car/car.component'
 import { CreateProductComponent } from './components/create-product/create-product.component'
 import { PaymentComponent } from './components/payment/payment.component'
+import { RegistryComponent } from './components/registry/registry.component'
 
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'payment',
     component: PaymentComponent
+  },
+  {
+    path: 'registry',
+    component: RegistryComponent
   },
   {
     path: '',

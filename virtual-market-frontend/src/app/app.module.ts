@@ -23,6 +23,7 @@ import { ProductComponent } from './components/product/product.component';
 import { CarComponent } from './components/car/car.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegistryComponent } from './components/registry/registry.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     ProductComponent,
     CarComponent,
     CreateProductComponent,
-    PaymentComponent
+    PaymentComponent,
+    RegistryComponent
   ],
   imports: [
     BrowserModule,
@@ -53,4 +55,5 @@ import { PaymentComponent } from './components/payment/payment.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+ export class AppModule { }
+
